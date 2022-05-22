@@ -1,0 +1,43 @@
+/* Uma empresa deseja fazer o reajuste salarial dos seus funcionários da seguinte forma: se o empregado for da categoria “Técnico”, receberá 30% de aumento, 
+se for da categoria “Gerente”, receberá 20% de aumento e os demais funcionários receberão 15% de aumento. 
+Faça um programa utilizando o comando switch que leia do teclado o salário e a categoria do funcionário, calcule e imprima o seu novo salário.
+*/
+
+#include <stdio.h>
+
+#define TECNICO 0.3
+#define GERENTE 0.2
+#define GERAL 0.15
+
+void main ()
+{
+	float salario, aumento;
+	int categoria;
+	
+	do{
+		printf("Qual seu salario? \n\n");
+		scanf("%f", &salario);
+			if (salario<=0)
+				printf("Valor invalido.\n\n");
+	}while (salario<=0);
+	
+	do{
+		printf("Qual sua categoria? \n\n1-Tecnico \n2-Gerente \n3-Outros\n\n");
+		scanf(" %i", &categoria);
+			if (categoria!=1 && categoria!=2 && categoria!=3)
+				printf("Valor invalido.\n\n");
+	}while (categoria!=1 && categoria!=2 && categoria!=3);
+	
+	switch(categoria){
+		case 1:
+			printf("Seu novo salario eh: R$%.2f.", aumento=salario+(salario*TECNICO));
+			break;
+			
+		case 2:
+			printf("Seu novo salario eh: R$%.2f.", aumento=salario+(salario*GERENTE));
+			break;
+			
+		case 3:
+			printf("Seu novo salario eh: R$%.2f.", aumento=salario+(salario*GERAL));
+		}
+}
