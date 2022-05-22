@@ -1,0 +1,47 @@
+/* Faça um programa que calcule a média de quatro notas de um aluno. Não devem ser permitidas entradas de notas maiores que 10 ou menores que 0.
+*/
+
+#include <stdio.h>
+
+void main ()
+{
+	float n1, n2, n3, n4, media;
+	
+	// leitura notas
+	do{
+		printf("Digite a primeira nota: \n");
+		_flushall();
+		scanf("%f", &n1);
+		if(n1<0 || n1>10)
+			printf("A nota deve ser um valor positivo entre 0 e 10.\n");	
+	} while (n1<0 || n1>10);
+	
+	do{
+		printf("Digite a segunda nota: \n");
+		_flushall();
+		scanf("%f", &n2);
+		if(n2<0 || n2>10)
+			printf("A nota deve ser um valor positivo entre 0 e 10.\n");	
+	} while (n2<0 || n2>10);
+	
+	do{
+		printf("Digite a terceira nota: \n");
+		_flushall();
+		scanf("%f", &n3);
+		if(n3<0 || n3>10)
+			printf("A nota deve ser um valor positivo entre 0 e 10.\n");	
+	} while (n3<0 || n3>10);
+	
+	do{
+		printf("Digite a quarta nota: \n");
+		_flushall();
+		scanf("%f", &n4);
+		if(n4<0 || n4>10)
+			printf("A nota deve ser um valor positivo entre 0 e 10.\n");	
+	} while (n4<0 || n4>10);
+	
+	media = (n1+n2+n3+n4) / 4;
+	
+	printf("A media do aluno eh: %.1f.\n", media);
+	
+}
