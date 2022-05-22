@@ -1,0 +1,35 @@
+/* Desejando obter a média aritmética das idades dos alunos do curso de Odontologia, do primeiro ano, do ano de 1998, 
+construir um programa que leia, calcule e mostre a média aritmética das idades. 
+O programa é encerrado quando for lida uma idade igual a zero e deve rejeitar idades negativas, pedindo que o usuário redigite.
+*/
+
+#include <stdio.h>
+
+void main ()
+{
+	int idade, contador=0;
+	float soma=0;
+	
+		
+	do{
+		do{
+			printf("idade? %i (0 para sair)", contador+1);
+			scanf("%i", &idade);		
+			if (idade<0)
+				printf("Valor invalido.\n\n");
+		} while (idade<0);
+	
+		if (idade>0)
+		{
+			soma += idade;
+			contador++;	
+		}
+			
+	} while (idade!=0);
+	
+	if (contador==0)
+		printf("nenhum estudante\n\n");
+	else
+		printf("media: %.2f ", soma/contador);
+			
+}
