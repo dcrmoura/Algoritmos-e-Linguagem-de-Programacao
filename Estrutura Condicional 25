@@ -1,0 +1,67 @@
+/* Utilizando-se do comando if else aninhado, elabore um programa que: 
+• Mostre um menu de opções de conversão entre moedas (1 – dólar americano, 2 – euro, 3 – libra esterlina e 4 – yuan;
+• Leia a escolha do usuário;
+• Leia o custo em R$ (reais) da operação;
+• Imprima o valor da transação na moeda escolhida, de acordo com os fatores de conversão da tabela abaixo.
+*/
+
+#include <stdio.h>
+
+#define DOLAR 3.258
+#define EURO 4.095
+#define LIBRA 4.529
+#define YUAN 0.515
+
+	// conversor moeda
+
+void main ()
+{
+	float valor1, valor2, conversao, moeda1, moeda2;
+	
+	// valor
+	do{
+		printf("Digite o valor: \n");
+		scanf(" %f", &valor1);
+			if(valor1<=0)
+			printf("Valor invalido.\n\n");
+	}while (valor1<=0);
+	
+	// primeira moeda
+	do{
+		printf("Estah em qual moeda? \n1. dolar \n2. euro \n3. libra \n4. yuan\n");
+		scanf(" %f", &moeda1);
+			if(moeda1!=1 && moeda1!=2 && moeda1!=3 && moeda1!=4)
+			printf("Valor invalido.\n\n");
+	}while (moeda1!=1 && moeda1!=2 && moeda1!=3 && moeda1!=4);
+	
+	if (moeda1==1 && moeda1!=2 && moeda1!=3 && moeda1!=4)
+		moeda1=DOLAR;
+	else if (moeda1==2 && moeda1!=1 && moeda1!=3 && moeda1!=4)
+		moeda1=EURO;
+	else if (moeda1==3 && moeda1!=1 && moeda1!=2 && moeda1!=4)
+		moeda1=LIBRA;
+	else 
+		moeda1=YUAN;
+	
+	//segunda moeda 
+	do{
+		printf("Converter para qual moeda? \n1. dolar \n2. euro \n3. libra \n4. yuan\n");
+		scanf(" %f", &moeda2);
+			if(moeda2!=1 && moeda2!=2 && moeda2!=3 && moeda2!=4)
+			printf("Valor invalido.\n\n");
+	}while (moeda2!=1 && moeda2!=2 && moeda2!=3 && moeda2!=4);
+	
+	if (moeda2==1 && moeda2!=2 && moeda2!=3 && moeda2!=4)
+		moeda2=DOLAR;
+	else if (moeda2==2 && moeda2!=1 && moeda2!=3 && moeda2!=4)
+		moeda2=EURO;
+	else if (moeda2==3 && moeda2!=1 && moeda2!=2 && moeda2!=4)
+		moeda2=LIBRA;
+	else 
+		moeda2=YUAN;
+	
+	//conversao
+	valor2 = (valor1*moeda1)/moeda2;
+	
+	printf("O valor da conversao eh de: R$%.2f.\n\n", valor2);	
+}
