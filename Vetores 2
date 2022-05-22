@@ -1,0 +1,77 @@
+/* Um armazém trabalha com um determinado número de mercadorias diferentes (um máximo de 100 itens). 
+Faça um programa que leia e armazene em vetores os preços de cada mercadoria e a quantidade vendida no mês e, além disso, calcule e imprima: 
+a. O faturamento mensal do armazém. 
+b. A mercadoria mais vendida e a menos vendida. 
+c. O preço da mercadoria menos vendida. 
+d. Quantas mercadorias têm seu preço mais alto que o preço da mercadoria menos vendida.
+*/
+
+#include <stdio.h>
+
+#define MAX_ITENS 100
+
+void main ()
+{
+	float preco[MAX_ITENS], 
+	faturamento=0;
+	
+	int i, 
+	quantidade[MAX_ITENS],
+	menosVendido,
+	maisVendido,
+	quantPrecoAlto=0,
+	nItens;
+	
+// lendo a quantidade de itens
+	do{
+		printf("Digite a quantidade de itens: \n\n");
+		scanf("%d", &nItens);
+		if(nItens<=0 || nItens>MAX_ITENS)
+			printf("\tValor invalido.\n\a");		
+	} while (nItens<=0 || nItens>MAX_ITENS);
+
+	for(i=0; i<nItens; i++)
+	{
+		// lendo o preço
+		do{
+			printf("\nDigite o preco do %do. item: R$ ", i+1);
+			scanf("%f", &preco[i]);
+			if(preco[i]<0)
+				printf("\nValor invalido.\n\n");
+		} while (preco[i]<0);
+	
+	// lendo a quantidade
+		do{
+			printf("\nDigite a quantidade do %do. item: ", i+1);
+			scanf("%d", &quantidade[i]);
+			if(quantidade[i]<=0)
+				printf("\nValor invalido.\n\n");
+		} while (quantidade[i]<=0);
+		
+		faturamento += preco[i]*quantidade[i];
+	}	
+
+	maisVendido = menosVendido = 0;
+	
+	for(i=1; i<nItens; i++)
+	{
+		if(quantidade[i] > quantidade[maisVendido])
+			maisVendido = i;
+			
+		if(quantidade[i] < quantidade[menosVendido])
+			menosVendido = i;
+	}
+
+	for(i=0; i<nItens; i++)
+		if(preco[i] > preco[menosVendido])
+			quantPrecoAlto++;
+			
+// imprimindo resultados
+	printf("\n\n++++++++++++++++++++++++\n\n");
+	printf("Faturamento: R$ %.2f\n", faturamento);
+	printf("Item mais vendido: %do.\n", maisVendido+1);
+	printf("Item menos vendido: %do.\n", menosVendido+1);
+	printf("Preco do item mais vendido: R$ %.2f.\n", preco[menosVendido]);
+	printf("Quantidade de itens com o preco acima do item menos vendido: %d", quantPrecoAlto);
+
+}
