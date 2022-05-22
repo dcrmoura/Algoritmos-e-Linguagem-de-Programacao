@@ -1,0 +1,41 @@
+/* Uma empresa deseja fazer o reajuste salarial dos seus funcionários da seguinte forma: se o empregado for da categoria “Técnico”, receberá 30% de aumento, 
+se for da categoria “Gerente”, receberá 20% de aumento e os demais funcionários receberão 15% de aumento. 
+Faça um programa utilizando o comando if else aninhado que leia do teclado o salário e a categoria do funcionário, calcule e imprima o seu novo salário.
+*/
+
+#include <stdio.h>
+
+#define TECNICO 0.3
+#define GERENTE 0.2
+#define GERAL 0.15
+
+void main ()
+{
+	float salario, aumento;
+	int categoria;
+	
+	do{
+		printf("Qual seu salario? \n");
+		scanf("%f", &salario);
+			if (salario<=0)
+				printf("\nValor invalido.\n\n");
+	} while (salario<=0);
+	
+	
+	
+	do{
+		printf("\n\nQual sua categoria? \n1-Tecnico \n2-Gerente \n3-Outros \n");
+		scanf(" %i", &categoria);
+			if (categoria!=1 && categoria!=2 && categoria!=3)
+				printf("\nValor invalido.\n\n");		
+	} while (categoria!=1 && categoria!=2 && categoria!=3);
+	
+	if (categoria==1 && categoria!=2 && categoria!=3)
+		printf("Seu novo salario eh de: R$%.2f.\n", salario+(aumento=salario*TECNICO));
+		
+	else if (categoria==2 && categoria!=1 && categoria!=3)
+		printf("Seu novo salario eh de: R$%.2f.\n", salario+(aumento=salario*GERENTE));
+			
+	else
+		printf("Seu novo salario eh de: R$%.2f.\n", salario+(aumento=salario*GERAL));
+}
