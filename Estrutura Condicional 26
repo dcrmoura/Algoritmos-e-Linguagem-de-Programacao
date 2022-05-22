@@ -1,0 +1,74 @@
+/* Utilizando-se do comando switch, elabore um programa que: 
+• Mostre um menu de opções de conversão entre moedas (1 – dólar americano, 2 – euro, 3 – libra esterlina e 4 – yuan;
+• Leia a escolha do usuário;
+• Leia o custo em R$ (reais) da operação;
+• Imprima o valor da transação na moeda escolhida, de acordo com os fatores de conversão da tabela abaixo.
+*/
+
+#include <stdio.h>
+
+#define DOLAR 3.258
+#define EURO 4.095
+#define LIBRA 4.529
+#define YUAN 0.515
+
+void main ()
+{
+	float valor1, valor2, conversao;
+	int moeda1, moeda2;
+	
+	do{
+		printf("Digite o valor: \n\n");
+		scanf(" %f", &valor1);
+			if (valor1<=0)
+				printf("valor invalido\n\n");
+	}while (valor1<=0);
+	
+	do{
+		printf("Estah em qual moeda? \n1. dolar \n2. euro \n3. libra \n4. yuan \n\n");
+		scanf(" %i", &moeda1);
+			if (moeda1!=1 && moeda1!=2 && moeda1!=3 && moeda1!=4)
+				printf("valor invalido\n\n");
+	}while (moeda1!=1 && moeda1!=2 && moeda1!=3 && moeda1!=4);
+
+	switch(moeda1){
+		case 1:
+			moeda1=valor1*DOLAR;
+			break;
+		case 2:
+			moeda1=valor1*EURO;
+			break;
+		case 3:
+			moeda1=valor1*LIBRA;
+			break;
+		case 4:
+			moeda1=valor1*YUAN;
+			break;
+		default:
+			printf("valor invalido\n\n");
+	}
+	
+	do{
+		printf("Deseja converter para qual moeda? \n1. dolar \n2. euro \n3. libra \n4. yuan \n\n");
+		scanf(" %i", &moeda2);
+			if (moeda2!=1 && moeda2!=2 && moeda2!=3 && moeda2!=4)
+				printf("valor invalido\n\n");
+	}while (moeda2!=1 && moeda2!=2 && moeda2!=3 && moeda2!=4);
+
+	switch(moeda2){
+		case 1:
+			printf("O valor da conversao eh de: %.2f dolares.", moeda1/DOLAR);
+			break;
+		case 2:
+			printf("O valor da conversao eh de: %.2f euros.", moeda1/EURO);
+			break;
+		case 3:
+			printf("O valor da conversao eh de: %.2f libras.", moeda1/LIBRA);
+			break;
+		case 4:
+			printf("O valor da conversao eh de: %.2f yuans.", moeda1/YUAN);
+			break;
+		default:
+			printf("valor invalido\n\n");
+	}
+}
