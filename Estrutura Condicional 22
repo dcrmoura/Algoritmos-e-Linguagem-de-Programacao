@@ -1,0 +1,61 @@
+/* Desejamos calcular, a partir do sexo e da altura, o peso ideal de uma pessoa. Para isto, devemos saber que existem duas fórmulas para o peso ideal, que são:
+• Homens: (72,7 * altura) - 58
+• Mulheres: (62,1 * altura) - 44,7
+Para que uma pessoa seja considerada obesa, a diferença entre o seu peso e o peso ideal deve ser superior à 40 Kg. Elabore um programa que leia o sexo, o peso e a
+altura de uma pessoa, imprima o peso ideal e informe se a pessoa está abaixo do peso ideal, acima do peso ideal ou obesa.
+*/
+
+#include <stdio.h>
+
+#define DIFERENCA_PESO 40
+#define CALCULO_M (72.7*altura)-58
+#define CALCULO_F (62.1*altura)-44.7
+
+void main ()
+{
+	float peso, altura, diferencaPeso;
+	int sexo; 
+	
+	do{
+		printf("\nQual seu peso? \n");
+		scanf(" %f", &peso);
+		if (peso<=0)
+		printf("Valor invalido.\n");	
+	} while (peso<=0);
+	
+	do{
+		printf("\nQual sua altura? \n");
+		scanf(" %f", &altura);
+		if (altura<=0)
+		printf("Valor invalido.\n");	
+	} while (altura<=0);
+	
+	do{
+		printf("\nQual seu sexo? \n1. feminino \n2. masculino \n");
+		scanf(" %d", &sexo);
+		if (sexo!=1 && sexo!=2)
+		printf("Valor invalido.\n");	
+	} while (sexo!=1 && sexo!=2);
+	
+	switch(sexo){
+		case 1: diferencaPeso=peso-CALCULO_F;
+			if (peso==CALCULO_F)
+			printf("Estah no peso ideal.");
+			else if (diferencaPeso>=DIFERENCA_PESO)
+			printf("Estah obeso.");
+			else if (diferencaPeso<DIFERENCA_PESO && diferencaPeso>0)
+			printf("Estah acima do peso.");
+			else 
+			printf("Estah abaixo do peso.");
+			break;	
+		case 2: diferencaPeso=peso-CALCULO_M;
+			if (peso==CALCULO_M)
+			printf("Estah no peso ideal.");
+			else if (diferencaPeso>=DIFERENCA_PESO)
+			printf("Estah obeso.");
+			else if (diferencaPeso<DIFERENCA_PESO && diferencaPeso>0)
+			printf("Estah acima do peso.");
+			else 
+			printf("Estah abaixo do peso.");				
+	}
+}
